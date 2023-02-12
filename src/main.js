@@ -1,10 +1,18 @@
 import { DataProcessor } from "./service/DataProcessor.js";
+import { weatherConfig } from "./config/weather-config.js";
 
-const url = "https://api.open-meteo.com/v1/gfs?hourly=temperature_2m";
-const dataProcessor = new DataProcessor(url);
-async function displayTemperatures() {
-    const data = await dataProcessor.getData(29.5577, 34.9519);
-    //
-    console.log(data.hourly.temperature_2m);
-}
-displayTemperatures();
+const url = weatherConfig.url;
+const citiesObj = weatherConfig.cities;
+const dataProcessor = new DataProcessor(url, citiesObj);
+dataProcessor.getTemperatureData("Rehovot");
+
+// async function getTemperatureData() {
+    
+// }
+// displayTemperatures();
+// async function displayTemperatures() {
+//     const data = await dataProcessor.getData(29.5577, 34.9519);//Eilat
+//     // console.log(data);
+//     console.log(data.hourly.temperature_2m)
+// }
+// displayTemperatures();
