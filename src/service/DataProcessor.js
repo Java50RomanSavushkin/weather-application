@@ -16,7 +16,6 @@ export class DataProcessor {
     async getTemperatureData(city, startDate, endDate, hourFrom, hourTo) {
         if (city in this.#cities) {
             let res = this.getCoordinatesByCity(city)
-            // return console.log(this.#cities[city[latitude]])
             const getDataByCoordinate = await this.getData(res[0], res[1]);
             return console.log(JSON.stringify(getDataByCoordinate));
         }
